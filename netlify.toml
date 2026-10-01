@@ -1,4 +1,6 @@
 [build]
+  # Rebuilds share/index.html from the share/ folder before publishing.
+  command = "node scripts/build-share-index.js"
   publish = "."
 
 [[headers]]
@@ -12,3 +14,10 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# Keep shared pages out of search results on every request, so no single
+# page can forget it. This stops indexing, not anyone holding the link.
+[[headers]]
+  for = "/share/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
