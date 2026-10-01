@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verse &amp; Lens</title>
+<meta name="description" content="Study resources that bring Scripture into focus, starting from what you already know. Everything but the printed book is free.">
+<link rel="canonical" href="https://verseandlens.com/">
+<meta name="theme-color" content="#3A4E31">
+<meta name="color-scheme" content="light">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://verseandlens.com/">
+<meta property="og:title" content="Verse &amp; Lens">
+<meta property="og:description" content="Study resources that bring Scripture into focus, starting from what you already know. Everything but the printed book is free.">
+<meta property="og:image" content="https://verseandlens.com/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=IBM+Plex+Mono:wght@400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,700;1,7..72,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper:  #FBF7EC;
+    --vellum: #F0E8D6;
+    --clay:   #CBB394;
+    --loam:   #8A6A47;
+    --stone:  #7D7466;
+    --bark:   #2E241C;
+    --canopy: #3A4E31;
+
+    --display: "Fraunces", Georgia, serif;
+    --body: "Literata", Georgia, serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+    --measure: 42rem;
+    --wide: 72rem;
+    --gutter: clamp(1rem, 5vw, 3rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--bark);
+    font-family: var(--body);
+    font-size: clamp(1.0625rem, 0.98rem + 0.35vw, 1.1875rem);
+    line-height: 1.7;
+    font-optical-sizing: auto;
+  }
+
+  a { color: var(--canopy); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  :focus-visible { outline: 2px solid var(--canopy); outline-offset: 3px; }
+
+  .skip {
+    position: absolute; left: var(--gutter); top: -3rem;
+    background: var(--paper); color: var(--bark); padding: .5rem .75rem;
+  }
+  .skip:focus { top: 1rem; }
+
+  /* One column, left-aligned, set like a book page. */
+  .page {
+    width: 100%;
+    max-width: calc(var(--wide) + 2 * var(--gutter));
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ---------- Hero: the mark on its own Canopy field ---------- */
+  .hero {
+    background: var(--canopy);
+    color: var(--paper);
+    padding: clamp(4rem, 12vh, 8rem) 0 clamp(4rem, 10vh, 7rem);
+  }
+  .hero :focus-visible { outline-color: var(--paper); }
+
+  .hero .mark {
+    display: block;
+    width: clamp(150px, 34vw, 240px);
+    height: auto;
+    /* Clear space: well beyond four ring-strokes on every side. */
+    margin: 0 0 clamp(2.5rem, 6vh, 3.5rem);
+  }
+
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 1.4rem + 4.4vw, 5.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+    max-width: 16ch;
+  }
+
+  .hero .descriptor {
+    margin: 0;
+    color: var(--vellum);
+    font-size: 1.125em;
+    line-height: 1.55;
+    max-width: 36rem;
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: clamp(3.5rem, 9vh, 5.5rem) 0; }
+  /* Wide page, readable lines: heading in its own column on desktop. */
+  section .page > * { max-width: var(--measure); }
+  @media (min-width: 900px) {
+    section .page {
+      display: grid;
+      grid-template-columns: minmax(12rem, 1fr) minmax(0, var(--measure));
+      column-gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+    section .page > h2 { grid-column: 1; grid-row: 1 / span 20; margin: .1em 0 0; }
+    section .page > :not(h2) { grid-column: 2; }
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 1.35rem + 1.6vw, 2.375rem);
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
+  }
+
+  p { margin: 0 0 1.15em; }
+  p:last-child { margin-bottom: 0; }
+
+  /* The first series sits on Vellum: the one thing on the page to act on. */
+  .series { background: var(--vellum); }
+
+  .signup { margin-top: 2rem; }
+  .signup label { display: block; font-weight: 700; margin-bottom: .5rem; }
+  .signup .row { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .signup input[type="email"] {
+    flex: 1 1 15rem;
+    min-width: 0;
+    font: inherit;
+    color: var(--bark);
+    background: var(--paper);
+    border: 1px solid var(--stone);
+    border-radius: 2px;
+    padding: .7rem .85rem;
+  }
+  .signup input[type="email"]:focus-visible { outline: 2px solid var(--canopy); outline-offset: 1px; border-color: var(--canopy); }
+  .signup button {
+    flex: 0 0 auto;
+    font: inherit;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--canopy);
+    border: 1px solid var(--canopy);
+    border-radius: 2px;
+    padding: .7rem 1.4rem;
+    cursor: pointer;
+  }
+  .signup button:hover { background: var(--bark); border-color: var(--bark); }
+  .signup button[disabled] { opacity: .6; cursor: progress; }
+  .signup .note { font-size: .875em; margin-top: .75rem; }
+  .signup .status { margin-top: 1rem; font-weight: 700; }
+  .signup .status:empty { display: none; }
+  .hp { position: absolute; left: -9999px; }
+
+  /* Author: signed, in "I" — set apart from the "we" above. */
+  .author .sign { font-style: italic; margin-top: 1.5rem; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--clay);
+    padding: 3rem 0 3.5rem;
+  }
+  footer .lockup { display: block; width: 200px; height: auto; margin: 0 0 1.5rem; }
+  footer .meta {
+    font-family: var(--mono);
+    font-size: .8125rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hero">
+  <div class="page">
+    <img class="mark" src="assets/verse-and-lens-mark-reversed.svg" width="741" height="606" alt="Verse &amp; Lens">
+    <h1>A different lens on Scripture.</h1>
+    <p class="descriptor">Verse &amp; Lens seeks to produce study resources that start from what you already know.</p>
+  </div>
+</header>
+
+<main id="main">
+
+  <section id="about" aria-labelledby="about-title">
+    <div class="page">
+      <h2 id="about-title">About</h2>
+      <p>A verse sometimes takes a different lens to really see what is going on inside it. People come to the Bible with their own culture and their own assumptions, and the work is not to strip that away. It is to hand them something that lets them see what the authors were bringing to it. God brought his truth to light through Jewish authors, and Jewish authors write in a specific way that is not how the 21st-century Western world writes.</p>
+      <p>Most study material opens at chapter one. Read the introduction, read chapter one, answer the questions about chapter one. Verse &amp; Lens seeks to first bring you something you already know and enjoy, because the connection is what makes the text land.</p>
+      <p>It is working when you can describe what a series is for, when you want to dig further, and when you can hand it to someone else.</p>
+    </div>
+  </section>
+
+  <section class="series" id="series" aria-labelledby="series-title">
+    <div class="page">
+      <h2 id="series-title">The Gospel as a Story</h2>
+      <p>The Gospel as a Story is the first Verse &amp; Lens series. It teaches how a story works before it teaches the gospel.</p>
+      <p>Everything but the printed book is free.</p>
+      <p>The book is written. The free PDF, the videos and the articles are being made now.</p>
+
+      <form class="signup" name="updates" method="POST" action="/?subscribed=1#series" data-netlify="true" netlify-honeypot="company">
+        <input type="hidden" name="form-name" value="updates">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+        <label for="email">Get an email when the first of them is ready</label>
+        <div class="row">
+          <input id="email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+          <button type="submit">Notify me</button>
+        </div>
+        <p class="note">We email only when something new is ready, and never share the address.</p>
+        <p class="status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="author" id="author" aria-labelledby="author-title">
+    <div class="page">
+      <h2 id="author-title">The author</h2>
+      <p>I'm Lee Pettijohn. I build operational systems for small businesses, and I write Verse &amp; Lens in the time that leaves.</p>
+      <p>This exists because I spent years saying things about Scripture that I could recite and could not explain. The words were supposed to do something. I said them and waited. What finally worked was not a better definition — it was coming at the text from something I already understood.</p>
+      <p>It is not named after me because it is not about me, and because someone else should be able to bring a series here one day.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="page">
+    <img class="lockup" src="assets/verse-and-lens-lockup.svg" width="2361" height="606" alt="Verse &amp; Lens">
+    <p class="meta">© 2026 Verse &amp; Lens<br>Free content under <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC BY-NC 4.0</a>. The name and the mark are never licensed.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.querySelector('.signup');
+    var status = form.querySelector('.status');
+    var button = form.querySelector('button');
+    var done = 'Thank you. We will email you when the first of them is ready.';
+
+    if (new URLSearchParams(location.search).has('subscribed')) {
+      status.textContent = done;
+    }
+
+    form.addEventListener('submit', function (e) {
+      if (!window.fetch) return;
+      e.preventDefault();
+      button.disabled = true;
+      status.textContent = '';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        form.reset();
+        status.textContent = done;
+      }).catch(function () {
+        status.textContent = 'That did not go through. Check your connection and send it again.';
+      }).finally(function () {
+        button.disabled = false;
+      });
+    });
+  })();
+</script>
+</body>
+</html>
