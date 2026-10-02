@@ -79,18 +79,36 @@ a{color:var(--canopy);text-decoration-thickness:1px;text-underline-offset:.18em}
 .notice{font-size:.875rem;color:var(--stone);border-top:1px solid var(--vellum);padding-top:1.25rem;margin-top:3rem}
 
 /* prev / next */
-.nav{display:flex;justify-content:space-between;gap:1rem;padding:2rem 0 4rem;border-top:1px solid var(--vellum);margin-top:2.5rem}
-.nav a{max-width:48%;overflow:hidden;text-overflow:ellipsis}
-.nav .next{margin-left:auto}
+.nav{display:flex;flex-direction:column;gap:.75rem;padding:2rem 0 4rem;border-top:1px solid var(--vellum);margin-top:2.5rem}
+.nav a{white-space:normal;line-height:1.4;border-radius:1.25rem;max-width:85%}
+.nav .prev{align-self:flex-start}
+.nav .next{align-self:flex-end;text-align:right}
+
+/* glossary toggles */
+.term{border-bottom:1px solid var(--vellum)}
+.term summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  font-family:var(--display);font-weight:700;font-size:1.2rem;line-height:1.3;padding:.9rem 0}
+.term summary::-webkit-details-marker{display:none}
+.term summary::after{content:"+";font:400 1.25rem/1 var(--mono);color:var(--canopy);flex:none}
+.term[open] summary::after{content:"–"}
+.term[open]{padding-bottom:1rem}
+.term summary:hover{color:var(--canopy)}
 
 footer{background:var(--canopy);color:var(--vellum);font:400 .8125rem/1.6 var(--mono);padding:2rem 0 2.5rem}
 footer a{color:var(--paper)}
+
+/* back to top */
+.top{position:fixed;right:clamp(.75rem,3vw,1.5rem);bottom:clamp(.75rem,3vw,1.5rem);z-index:6;width:2.75rem;height:2.75rem;
+  border-radius:50%;border:1px solid var(--clay);background:var(--paper);color:var(--canopy);font:400 1.25rem/1 var(--mono);
+  cursor:pointer;opacity:0;visibility:hidden;transition:opacity .2s,background .15s,color .15s;box-shadow:0 2px 8px rgba(46,36,28,.12)}
+.top.show{opacity:1;visibility:visible}
+.top:hover,.top:focus-visible{background:var(--canopy);color:var(--paper);border-color:var(--canopy)}
 
 /* one section at a time, once script runs */
 .js .view{display:none}
 .js .view.on{display:block}
 .js .home .toc{display:block}
-@media print{.bar,.nav,.progress,.resume,footer{display:none!important}.js .view{display:block!important}.sec{break-before:page}}
+@media print{.term summary::after{display:none}.top,.bar,.nav,.progress,.resume,footer{display:none!important}.js .view{display:block!important}.sec{break-before:page}}
 </style>
 </head>
 <body data-book="The Gospel as a Story">
@@ -588,12 +606,14 @@ footer a{color:var(--paper)}
 <p>Outside the window the gold is going out of the sky. The dishes are done. Amy is talking, and crying a little, and Nora is listening.</p>
 <p>Tomorrow the alarm will go off at 5:40, the way it always does.</p>
 <p>And he will already be in the room, the way he always is.</p><nav class="nav" aria-label="Chapter"><a class="prev" href="#ch28">← Chapter Twenty-eight: The Mountain</a><a class="next" href="#glossary">Glossary &amp; Story Map →</a></nav></div></section><section class="view sec" id="glossary" data-title="Glossary &amp; Story Map"><div class="wrap"><p class="label">At the back</p><h2 class="name">Glossary &amp; Story Map</h2><p class="lede">The vocabulary the book teaches, gathered in one place. Each term lists the chapter it's introduced in, a plain definition, a few recent story examples, and biblical examples — how that element shows up in the true story, in Jesus, and in the gospel.</p><h3>WHERE THIS COMES FROM</h3>
-<h4>FREYTAG'S PYRAMID (the dramatic arc)</h4>
+<details class="term"><summary>FREYTAG'S PYRAMID (the dramatic arc)</summary>
 <p>In 1863, a German writer named Gustav Freytag mapped the shape nearly every drama follows — exposition, rising action, climax, falling action, and resolution. It is the backbone this book uses. None of this is invented; it has been named and studied for over 150 years.</p>
-<h4>THE HERO'S JOURNEY (the monomyth)</h4>
+</details>
+<details class="term"><summary>THE HERO'S JOURNEY (the monomyth)</summary>
 <p>In 1949, Joseph Campbell studied myths from all over the world and found they share one deep pattern: a hero leaves the "world of common day," answers a call, meets a mentor, survives an ordeal, and returns. In 1992 Christopher Vogler adapted Campbell for storytellers and gave the stages the names most writers now use, including "the ordinary world." We borrow a few of those terms where they say it better than Freytag does.</p>
+</details>
 <h3>FOUNDATION</h3>
-<h4>STORY</h4>
+<details class="term"><summary>STORY</summary>
 <p><strong>Introduced:</strong> <a href="#ch01">Chapter 1</a></p>
 <p><strong>Definition:</strong> Not just what happens, but what it means. A story is a sequence of events shaped so they carry meaning and leave you changed.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -602,15 +622,17 @@ footer a{color:var(--paper)}
 <ul><li>The whole Bible is a single, true story — not a pile of facts and laws.</li><li>"Gospel" means good news: the announcement that something happened. It is a story before it is anything else.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>Your own life, once the elements are laid out on a table and you can see that the part still ahead runs through a choice that is yours (Chapter 24).</li></ul>
-<h4>PLOT</h4>
+</details>
+<details class="term"><summary>PLOT</summary>
 <p><strong>Introduced:</strong> <a href="#ch01">Chapter 1</a></p>
 <p><strong>Definition:</strong> What happens — the events themselves, in order. The plot is the skeleton; the story is the living thing that hangs on it.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>The Hobbit — the plot is "a hobbit leaves home, helps reclaim a mountain of treasure, and returns." Bare events.</li><li>Star Wars — the plot is "a farm boy blows up a space station." The story is a nobody discovering he matters.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
 <ul><li>The bare events — creation, exodus, the cross, the empty tomb — are the plot; the gospel is what they mean.</li><li>Knowing the Bible stories (the plot) without grasping the gospel (the story) is exactly the gap this book exists to close.</li></ul>
+</details>
 <h3>THE ARC (Freytag's spine, in order)</h3>
-<h4>EXPOSITION / ORDINARY WORLD</h4>
+<details class="term"><summary>EXPOSITION / ORDINARY WORLD</summary>
 <p><strong>Introduced:</strong> <a href="#ch02">Chapter 2</a></p>
 <p><strong>Definition:</strong> The opening stretch that establishes the world and the way things are before the trouble starts — the "before" that quietly shows you what is at stake. (Ordinary world is Vogler's Hero's-Journey name for the same thing; Campbell called it the world of common day.)</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -619,7 +641,8 @@ footer a{color:var(--paper)}
 <ul><li>Creation and Eden (Genesis 1–2) — the world declared "very good," the way it is supposed to be, shown to us before the break.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>The Tuesday you already know is good — whole, rightly related, provided for, purposeful, peaceful at the end — which you can build out of an ordinary day without ever being handed the list (Chapter 24).</li></ul>
-<h4>INCITING INCIDENT</h4>
+</details>
+<details class="term"><summary>INCITING INCIDENT</summary>
 <p><strong>Introduced:</strong> <a href="#ch05">Chapter 5</a></p>
 <p><strong>Definition:</strong> The event that breaks the ordinary world and sets the story in motion — the point of no return, where the gate locks behind the hero on their path.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -628,14 +651,16 @@ footer a{color:var(--paper)}
 <ul><li>The Fall (Genesis 3) — the break that ends the good world and starts the whole story; the gate locks behind humanity, and the way back is guarded (Genesis 3:23–24).</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>The day you knew that you are what is wrong with the world. You cannot un-know it, and there is nobody left to hand it to (Chapter 25).</li></ul>
-<h4>RISING ACTION</h4>
+</details>
+<details class="term"><summary>RISING ACTION</summary>
 <p><strong>Introduced:</strong> <a href="#ch07">Chapter 7</a></p>
 <p><strong>Definition:</strong> The escalating run of obstacles and complications that build tension toward the climax.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>The Fellowship's road to Mordor growing more dangerous at every stage.</li><li>Each new round in the arena of The Hunger Games.</li><li>The escalating tasks of the Triwizard Tournament.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
 <ul><li>The promise to Abraham (Genesis 12:1–3), the exodus out of Egypt (Exodus 12–14), the kings and prophets — each one raising and dashing the hope that the promised one has come.</li></ul>
-<h4>THE ORDEAL / ALL-IS-LOST MOMENT</h4>
+</details>
+<details class="term"><summary>THE ORDEAL / ALL-IS-LOST MOMENT</summary>
 <p><strong>Introduced:</strong> <a href="#ch07">Chapter 7</a></p>
 <p><strong>Definition:</strong> The darkest point on the story's map — the moment near the end of the rising action when it looks like the hero has lost everything: beaten, empty, out of options. It feels like the end; it is meant to. (Campbell calls it the ordeal; screenwriters call it the all-is-lost moment.)</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -644,7 +669,8 @@ footer a{color:var(--paper)}
 <ul><li>The Passion — the arrest, the trial, the mocking coronation and the lifting up (Matthew 26:47–27:31; John 18–19), the disciples scattered (Mark 14:50). At the scale of the life of Jesus this is the ordeal before the climax; at the scale of the whole Bible the ordeal is the long silence that ends when the Author steps in (Chapter 15); from inside the story, the death and the tomb feel like all-is-lost too (Luke 24:21).</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>The coat still on, the pile still in the sink, and the light going out in your chest over something as small as dishes (Chapter 29).</li></ul>
-<h4>CLIMAX</h4>
+</details>
+<details class="term"><summary>CLIMAX</summary>
 <p><strong>Introduced:</strong> <a href="#ch08">Chapter 8</a></p>
 <p><strong>Definition:</strong> The turning point of highest tension, where the central conflict is decided — and often it is a choice, not just a fight.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -653,7 +679,8 @@ footer a{color:var(--paper)}
 <ul><li>The laying down of his life — a choice, not merely a fight: "No one takes it from me, but I lay it down of my own accord" (John 10:18); "It is finished" (John 19:30); "Father, into your hands I commit my spirit" (Luke 23:46). The cross is the coronation (John 12:32–33), and the climax includes its cost, the death and the tomb.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>Your own choice, with every response there has ever been standing around it — fight it, file it, flee it, or fall to your knees (Chapter 27). And, at the smallest possible size, the choice to look up from the sink (Chapter 29).</li></ul>
-<h4>FALLING ACTION</h4>
+</details>
+<details class="term"><summary>FALLING ACTION</summary>
 <p><strong>Introduced:</strong> <a href="#ch09">Chapter 9</a></p>
 <p><strong>Definition:</strong> What happens right after the climax, as the consequences play out.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -662,7 +689,8 @@ footer a{color:var(--paper)}
 <ul><li>Opens with the resurrection, God's verdict on the finished work (Mark 16:1–8; Romans 4:25; Philippians 2:8–9), then the breath of the Spirit (John 20:22; Acts 2) and the age of the church — the "already but not yet." We live here, after the climax, before the end.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>The life after you knelt: the apostles who would not stop talking, Patrick going back to the people who took him, Müller's orphan houses — and a mountain you cannot climb, with the one who walked down it standing beside you at the bottom (Chapter 28).</li></ul>
-<h4>RESOLUTION (also called the dénouement)</h4>
+</details>
+<details class="term"><summary>RESOLUTION (also called the dénouement)</summary>
 <p><strong>Introduced:</strong> <a href="#ch09">Chapter 9</a></p>
 <p><strong>Definition:</strong> The story's final state — the new normal, the loose ends tied, the world as it is after everything.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -671,22 +699,25 @@ footer a{color:var(--paper)}
 <ul><li>The New Creation (Isaiah 65:17–25; Revelation 21–22) — the world made right, every tear wiped away; the good world of Eden restored and made greater.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>Another Tuesday. The same day, the same facts, and someone in it (Chapter 29).</li></ul>
+</details>
 <h3>THE ENGINE</h3>
-<h4>CONFLICT</h4>
+<details class="term"><summary>CONFLICT</summary>
 <p><strong>Introduced:</strong> <a href="#ch03">Chapter 3</a></p>
 <p><strong>Definition:</strong> The struggle between opposing forces that drives everything forward. No conflict, no story.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>Frodo against the pull of the Ring.</li><li>Katniss against the Capitol.</li><li>Simba against Scar — and against his own guilt.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
 <ul><li>The enmity set between the serpent and the woman's offspring (Genesis 3:15); the struggle between good and evil running through the whole story; the spiritual conflict beneath the visible one (Ephesians 6:12).</li></ul>
-<h4>STAKES</h4>
+</details>
+<details class="term"><summary>STAKES</summary>
 <p><strong>Introduced:</strong> <a href="#ch02">Chapter 2</a></p>
 <p><strong>Definition:</strong> What can be won or lost — the reason the conflict matters.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>The firefighter's daughter, and his three days left before retirement.</li><li>The Shire itself, and everyone in it.</li><li>The lives of the children thrown into the Games.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
 <ul><li>Death of every kind and judgment on one side; eternal life and a restored world on the other. "The wages of sin is death" (Romans 6:23).</li></ul>
-<h4>THE GOOD/EVIL AXIS</h4>
+</details>
+<details class="term"><summary>THE GOOD/EVIL AXIS</summary>
 <p><strong>Introduced:</strong> <a href="#ch03">Chapter 3</a></p>
 <p><strong>Definition:</strong> The moral dimension every gripping story assumes — that good and evil are real, and that we can tell them apart. Flatten it into "just perspective" and the story dies.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -695,8 +726,9 @@ footer a{color:var(--paper)}
 <ul><li>The reality of sin, and the moral law written on every human heart — why "you already know" (Romans 2:14–15). Good is the character of a good Author, not a preference.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>The throne you took without anyone crowning you: on the question of what is good — and what is good about you — you are the one who decides (Chapter 25).</li></ul>
+</details>
 <h3>THE PEOPLE</h3>
-<h4>PROTAGONIST</h4>
+<details class="term"><summary>PROTAGONIST</summary>
 <p><strong>Introduced:</strong> <a href="#ch04">Chapter 4</a></p>
 <p><strong>Definition:</strong> The main character whose journey we follow.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -705,7 +737,8 @@ footer a{color:var(--paper)}
 <ul><li>Jesus, the true hero — the second Adam who succeeds where the first failed (Romans 5:18–19; 1 Corinthians 15:45) — with humanity drawn in beside him.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>You. Part Three never takes this away from you; it hands you the choice that finishes your story (Chapters 24, 27).</li></ul>
-<h4>ANTAGONIST (the villain)</h4>
+</details>
+<details class="term"><summary>ANTAGONIST (the villain)</summary>
 <p><strong>Introduced:</strong> <a href="#ch03">Chapter 3</a></p>
 <p><strong>Definition:</strong> The force or character standing against the protagonist. The best ones are frightening because they want something genuinely wrong.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -714,7 +747,8 @@ footer a{color:var(--paper)}
 <ul><li>The serpent / Satan / sin (Genesis 3:1–15) — the enemy whose defeat the whole story turns on.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>The reach to decide good and evil for yourself — part your own nature, part the Opposer who has been holding the same fruit out to you your whole life (Chapter 25).</li></ul>
-<h4>MENTOR / SAGE (from the Hero's Journey)</h4>
+</details>
+<details class="term"><summary>MENTOR / SAGE (from the Hero's Journey)</summary>
 <p><strong>Introduced:</strong> <a href="#ch04">Chapter 4</a></p>
 <p><strong>Definition:</strong> The wiser guide who prepares the hero — and who is usually not the hero. Often they step back or fall, forcing the hero to stand alone.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -723,22 +757,25 @@ footer a{color:var(--paper)}
 <ul><li>The prophets and John the Baptist (John 1:23), Scripture, and ultimately the Holy Spirit — the Helper Jesus sends (John 14:16, 26). Note the subversion: here the hero, Jesus, is also the one who gives the Guide (John 16:7), in the falling action (John 20:22; Acts 2). This pays off the Chapter 4 plant.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>Two guides in front of you. One says the answers are already inside you; the other offers to replace the heart you have and write himself on the new one, and charges your pride for it (Chapter 26).</li></ul>
-<h4>CHARACTER ARC</h4>
+</details>
+<details class="term"><summary>CHARACTER ARC</summary>
 <p><strong>Introduced:</strong> <a href="#ch08">Chapter 8</a></p>
 <p><strong>Definition:</strong> The inner change a character goes through from beginning to end.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>Simba, from runaway cub to king.</li><li>Tony Stark, from self-absorbed playboy to the man who lays down his life.</li><li>Katniss, from a girl just trying to feed her family to the reluctant symbol of a rebellion.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
 <ul><li>Humanity's arc from fall to redemption; the believer remade — "a new creation" (2 Corinthians 5:17); Jesus living the human life rightly as the pattern of what we are meant to become (Hebrews 4:15).</li></ul>
+</details>
 <h3>THE TRICKS (how a story keeps its promises)</h3>
-<h4>FORESHADOWING</h4>
+<details class="term"><summary>FORESHADOWING</summary>
 <p><strong>Introduced:</strong> <a href="#ch06">Chapter 6</a></p>
 <p><strong>Definition:</strong> A hint dropped early about something coming later.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>The Lion King — Mufasa tells Simba the great kings watch from the stars, which pays off when Mufasa later appears to him in the clouds.</li><li>The Lord of the Rings — Gandalf's warning that Bilbo's pity in sparing Gollum "may rule the fate of many" foreshadows how Gollum, in the end, is the one who destroys the Ring.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
 <ul><li>The Passover lamb (Exodus 12; John 1:29) and the bronze serpent lifted up (Numbers 21:9; John 3:14) — Old Testament "types" pointing forward to Christ.</li></ul>
-<h4>SETUP AND PAYOFF</h4>
+</details>
+<details class="term"><summary>SETUP AND PAYOFF</summary>
 <p><strong>Introduced:</strong> <a href="#ch06">Chapter 6</a></p>
 <p><strong>Definition:</strong> A detail planted early that matters later — the plant, then the return. Nothing in a good story is wasted.</p>
 <p><strong>Recent Story Examples:</strong></p>
@@ -747,30 +784,35 @@ footer a{color:var(--paper)}
 <ul><li>Genesis 3:15 — the "seed of the woman" promised at the Fall and paid off at the cross; the entire Old Testament as setup for Jesus.</li></ul>
 <p><strong>In Your Own Story:</strong></p>
 <ul><li>The three phrases, said as your own at the point of decision — what a yes would actually mean (Chapter 27).</li></ul>
-<h4>CHEKHOV'S GUN</h4>
+</details>
+<details class="term"><summary>CHEKHOV'S GUN</summary>
 <p><strong>Introduced:</strong> <a href="#ch06">Chapter 6</a></p>
 <p><strong>Definition:</strong> The rule that anything a story deliberately shows you must matter — if there is a loaded gun on the wall in Act One, it has to go off by the end. Nothing important is on stage by accident.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>The Lord of the Rings — the mithril shirt Bilbo gives Frodo, shown early, later stops a spear that should have killed him in Moria.</li><li>Harry Potter — the Golden Snitch Dumbledore leaves to Harry ("I open at the close") sits unopened until the exact moment it must matter.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
 <ul><li>The promise planted in the wreckage of the Fall (Genesis 3:15) that the whole story is obligated to fire — and does, at the cross. The single most important planted "gun" in the biblical story.</li></ul>
-<h4>PROPHECY</h4>
+</details>
+<details class="term"><summary>PROPHECY</summary>
 <p><strong>Introduced:</strong> <a href="#ch06">Chapter 6</a></p>
 <p><strong>Definition:</strong> An in-story promise or prediction the plot is then bound to fulfill — the strongest form of setup and payoff, because the audience spends the whole story waiting for it to come true.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>The prophecy binding Harry and Voldemort — "neither can live while the other survives."</li><li>"The One" foretold in The Matrix.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
 <ul><li>The messianic prophecies — the suffering servant (Isaiah 53), Bethlehem (Micah 5:2), the words of Psalm 22 — all fulfilled in Jesus.</li></ul>
+</details>
 <h3>THE POINT</h3>
-<h4>THEME</h4>
+<details class="term"><summary>THEME</summary>
 <p><strong>Introduced:</strong> <a href="#ch10">Chapter 10</a></p>
 <p><strong>Definition:</strong> What the story is really about underneath the plot — the truth it is exploring, the thing it wants to change in you.</p>
 <p><strong>Recent Story Examples:</strong></p>
 <ul><li>Sacrifice — Harry walking willingly into the forest to face Voldemort.</li><li>Mercy over vengeance — Luke throwing away his lightsaber rather than killing his father.</li><li>The corruption of power — the Ring slowly poisoning everyone who carries it.</li><li>Love that protects — Lily's death shielding baby Harry, a protection even Voldemort cannot undo.</li></ul>
 <p><strong>Biblical Examples:</strong></p>
-<ul><li>The gospel itself — sacrificial love, grace, redemption, and God making all things new (John 3:16; Revelation 21:5).</li></ul><h3>Scripture</h3><p class="notice">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</p><nav class="nav" aria-label="Chapter"><a class="prev" href="#ch29">← Chapter Twenty-nine: Another Tuesday</a></nav></div></section>
+<ul><li>The gospel itself — sacrificial love, grace, redemption, and God making all things new (John 3:16; Revelation 21:5).</li></ul></details>
+<h3>Scripture</h3><p class="notice">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</p><nav class="nav" aria-label="Chapter"><a class="prev" href="#ch29">← Chapter Twenty-nine: Another Tuesday</a></nav></div></section>
 </main>
 <footer><div class="wrap">Verse &amp; Lens · <a href="https://verseandlens.com/">verseandlens.com</a></div></footer>
+<button class="top" id="top" type="button" aria-label="Back to top" title="Back to top">↑</button>
 <script>
 (function(){
   document.documentElement.classList.add('js');
@@ -796,6 +838,11 @@ footer a{color:var(--paper)}
   }
   window.addEventListener('hashchange',function(){show(location.hash.slice(1));});
   show(location.hash.slice(1)||'home');
+  var top=document.getElementById('top');
+  function onScroll(){top.classList.toggle('show',window.scrollY>600);}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  window.addEventListener('beforeprint',function(){[].forEach.call(document.querySelectorAll('details'),function(d){d.open=true;});});
 })();
 </script>
 </body>
