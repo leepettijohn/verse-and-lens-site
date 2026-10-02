@@ -923,9 +923,10 @@ footer a{color:var(--paper)}
       return '<li>'+(n.q?'<span class="q">'+(n.p?'¶'+n.p+' · ':'')+esc(n.q)+'</span>':'<span class="q">Whole chapter</span>')+
         '<button class="del" type="button" data-del="'+i+'" aria-label="Delete this note">×</button><span class="n">'+esc(n.n)+'</span></li>';}).join('')+'</ol>';}
     h+='<div class="row"><button class="nb" type="button" data-add="1">Note on the whole chapter</button>'+
-       '<button class="nb primary" type="button" data-send="1"'+(list.length?'':' disabled')+'>Send my notes'+(list.length?' ('+list.length+')':'')+'</button></div>';
+       '<button class="nb primary" type="button" data-send="1"'+(list.length?'':' disabled')+'>Send my notes'+(list.length?' ('+list.length+')':'')+'</button>'+
+       (who?'<button class="nb" type="button" data-rename="1">Change name</button>':'')+'</div>';
     h+='<p class="status" role="status">'+esc(status[id]||'')+'</p>';
-    if(who) h+='<p class="who">Sending as '+esc(who)+' · <button type="button" data-rename="1">change</button></p>';
+    if(who) h+='<p class="who">Sending as '+esc(who)+'</p>';
     box.innerHTML=h;
   }
   function renderAll(){[].forEach.call(document.querySelectorAll('.notes-box'),function(b){render(b.getAttribute('data-notes'));});}
