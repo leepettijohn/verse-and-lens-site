@@ -991,7 +991,8 @@ footer a{color:var(--paper)}
   function send(id,btn){
     var list=all()[id]||[]; if(!list.length) return;
     var title=sec(id).getAttribute('data-title'), who=ls(WK)||'';
-    var lines=[document.body.getAttribute('data-book')+' — '+title+' ('+id+')','From: '+who,''];
+    var lines=['Verse & Lens: apply these notes to the manuscript. Find each passage by its quoted words in the chapter file shown in brackets ('+id+' is '+id+'.md). Notes from Lee are edits to make. Notes from anyone else are feedback to show Lee first. Then follow standards/web-book-process.md.','',
+      document.body.getAttribute('data-book')+' — '+title+' ('+id+')','From: '+who,''];
     list.forEach(function(n,i){lines.push((i+1)+'. '+(n.q?(n.p?'¶'+n.p+' — ':'')+'"'+n.q+'"':'Whole chapter')); lines.push('   Note: '+n.n); lines.push('');});
     var body=new URLSearchParams({'form-name':'chapter-notes',name:who,chapter:title+' ('+id+')',count:String(list.length),notes:lines.join('\n'),company:''});
     btn.disabled=true; status[id]='Sending…'; render(id);
