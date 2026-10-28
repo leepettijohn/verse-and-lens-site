@@ -188,7 +188,7 @@ function render(pages, code) {
     <h1>Shared Pages</h1>
     <form id="codeForm">
       <label for="code" class="hidden">Code</label>
-      <input id="code" type="password" autocomplete="current-password" placeholder="Code" autofocus>
+      <input id="code" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="current-password" placeholder="Code" autofocus>
       <button type="submit" class="primary">Open</button>
     </form>
     <div id="err" role="status">${code ? "" : "SHARE_CODE is not set in Netlify yet."}</div>
